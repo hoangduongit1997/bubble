@@ -1,7 +1,6 @@
 library bubble;
 
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -99,9 +98,31 @@ class Bubble extends StatelessWidget {
             elevation: elevation,
             shadowColor: shadowColor,
           ),
-          child: Container(
-            padding: bubbleClipper.edgeInsets,
-            child: child,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Container(
+                  margin: margin.copyWith(
+                    left: margin.left + 8,
+                    right: margin.right + 8,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      stops: [0.4, 0.0],
+                      colors: [
+                        Colors.blue[300]!,
+                        Colors.white,
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+              Container(
+                padding: bubbleClipper.edgeInsets,
+                child: child,
+              ),
+            ],
           ),
         ),
       );
