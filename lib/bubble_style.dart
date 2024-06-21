@@ -20,6 +20,9 @@ class BubbleStyle {
     this.padding,
     this.margin,
     this.alignment,
+    this.backgroundPercent = 0.0,
+    this.backgroundPercentColor,
+    this.extendedPercentPadding = 8.0,
   });
 
   final Radius? radius;
@@ -39,4 +42,7 @@ class BubbleStyle {
   final BubbleEdges? padding;
   final BubbleEdges? margin;
   final AlignmentGeometry? alignment;
+  final Color? backgroundPercentColor;
+  final double backgroundPercent;
+  final double extendedPercentPadding;
 }
