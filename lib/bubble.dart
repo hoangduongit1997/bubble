@@ -41,6 +41,9 @@ class Bubble extends StatelessWidget {
     BubbleEdges? margin,
     AlignmentGeometry? alignment,
     BubbleStyle? style,
+    Color? backgroundPercentColor,
+    double? backgroundPercent,
+    double? extendedPercentPadding,
   })  : color = color ?? style?.color ?? Colors.white,
         borderColor = borderColor ?? style?.borderColor ?? Colors.transparent,
         borderWidth = borderWidth ?? style?.borderWidth ?? 1,
@@ -70,6 +73,13 @@ class Bubble extends StatelessWidget {
             bottom: padding?.bottom ?? style?.padding?.bottom ?? 6,
           ),
         ),
+        backgroundPercentColor = backgroundPercentColor ??
+            style?.backgroundPercentColor ??
+            Colors.transparent,
+        backgroundPercent =
+            backgroundPercent ?? style?.backgroundPercent ?? 8.0,
+        extendedPercentPadding =
+            extendedPercentPadding ?? style?.extendedPercentPadding ?? 8.0,
         super(key: key);
 
   final Widget? child;
@@ -82,6 +92,9 @@ class Bubble extends StatelessWidget {
   final EdgeInsets margin;
   final AlignmentGeometry? alignment;
   final BubbleClipper bubbleClipper;
+  final Color? backgroundPercentColor;
+  final double backgroundPercent;
+  final double extendedPercentPadding;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -100,24 +113,25 @@ class Bubble extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Positioned.fill(
-                child: Container(
-                  margin: margin.copyWith(
-                    left: margin.left + 8,
-                    right: margin.right + 8,
-                  ),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      stops: [0.4, 0.0],
-                      colors: [
-                        Colors.blue[300]!,
-                        Colors.white,
-                      ],
+              if (backgroundPercentColor != null)
+                Positioned.fill(
+                  child: Container(
+                    margin: margin.copyWith(
+                      left: margin.left + extendedPercentPadding,
+                      right: margin.right + extendedPercentPadding,
                     ),
-                    borderRadius: BorderRadius.circular(16),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        stops: [backgroundPercent, 0.0],
+                        colors: [
+                          backgroundPercentColor!,
+                          Colors.transparent,
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                 ),
-              ),
               Container(
                 padding: bubbleClipper.edgeInsets,
                 child: child,
