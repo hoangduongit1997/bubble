@@ -77,9 +77,9 @@ class Bubble extends StatelessWidget {
             style?.backgroundPercentColor ??
             Colors.transparent,
         backgroundPercent =
-            backgroundPercent ?? style?.backgroundPercent ?? 8.0,
+            backgroundPercent ?? style?.backgroundPercent ?? 0.0,
         extendedPercentPadding =
-            extendedPercentPadding ?? style?.extendedPercentPadding ?? 8.0,
+            extendedPercentPadding ?? style?.extendedPercentPadding ?? 0.0,
         super(key: key);
 
   final Widget? child;
