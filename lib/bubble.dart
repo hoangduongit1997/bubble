@@ -80,6 +80,8 @@ class Bubble extends StatelessWidget {
             backgroundPercent ?? style?.backgroundPercent ?? 0.0,
         extendedPercentPadding =
             extendedPercentPadding ?? style?.extendedPercentPadding ?? 0.0,
+        begin = style?.begin ?? Alignment.centerLeft,
+        end = style?.end ?? Alignment.centerRight,
         super(key: key);
 
   final Widget? child;
@@ -95,6 +97,8 @@ class Bubble extends StatelessWidget {
   final Color? backgroundPercentColor;
   final double backgroundPercent;
   final double extendedPercentPadding;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -123,6 +127,8 @@ class Bubble extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         stops: [backgroundPercent, 0.0],
+                        begin: begin,
+                        end: end,
                         colors: [
                           backgroundPercentColor!,
                           Colors.transparent,

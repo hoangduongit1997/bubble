@@ -23,6 +23,8 @@ class BubbleStyle {
     this.backgroundPercent = 0.0,
     this.backgroundPercentColor,
     this.extendedPercentPadding = 8.0,
+    this.begin = Alignment.centerLeft,
+    this.end = Alignment.centerRight,
   });
 
   final Radius? radius;
@@ -45,4 +47,6 @@ class BubbleStyle {
   final Color? backgroundPercentColor;
   final double backgroundPercent;
   final double extendedPercentPadding;
+  final AlignmentGeometry begin;
+  final AlignmentGeometry end;
 }
